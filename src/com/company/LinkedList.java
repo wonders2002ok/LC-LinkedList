@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.Node;
 
-public class MergeLists {
+public class LinkedList {
     Node head;
 
     public void addToLast(Node node) {
@@ -49,5 +49,21 @@ public class MergeLists {
         }
 
         return dummyhead.next;
+    }
+
+    public static Node reverse(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node dummy = null;
+        Node cur = head;
+        while (cur != null) {
+            Node temp = cur.next;
+            cur.next = dummy;
+            dummy = cur;
+            cur = temp;
+        }
+        return dummy;
     }
 }

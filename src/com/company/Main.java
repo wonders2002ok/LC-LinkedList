@@ -1,11 +1,15 @@
 package com.company;
 
+import sun.awt.image.ImageWatched;
+
 public class Main {
 
     public static void main(String[] args) {
-        MergeLists l1 = new MergeLists();
-        MergeLists l2 = new MergeLists();
-        MergeLists mergedList = new MergeLists();
+        LinkedList l1 = new LinkedList();
+        LinkedList l2 = new LinkedList();
+        LinkedList mergedList = new LinkedList();
+        LinkedList revertedl1 = new LinkedList();
+        LinkedList revertedl2 = new LinkedList();
 
         l1.addToLast(new Node(-1));
         l1.addToLast(new Node(0));
@@ -20,9 +24,12 @@ public class Main {
         System.out.print("LinkedList 2 is ");
         l2.printList();
 
-        mergedList.head = MergeLists.sortedMerge(l1.head, l2.head);
+        mergedList.head = LinkedList.sortedMerge(l1.head, l2.head);
         System.out.print("Merged List is ");
         mergedList.printList();
 
+        mergedList.head = LinkedList.reverse(mergedList.head);
+        System.out.print("Reversed Merge List is ");
+        mergedList.printList();
     }
 }
