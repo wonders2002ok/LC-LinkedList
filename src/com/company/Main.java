@@ -8,8 +8,6 @@ public class Main {
         LinkedList l1 = new LinkedList();
         LinkedList l2 = new LinkedList();
         LinkedList mergedList = new LinkedList();
-        LinkedList revertedl1 = new LinkedList();
-        LinkedList revertedl2 = new LinkedList();
 
         l1.addToLast(new Node(-1));
         l1.addToLast(new Node(0));
