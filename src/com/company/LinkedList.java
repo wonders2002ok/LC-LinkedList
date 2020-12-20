@@ -1,7 +1,17 @@
 package com.company;
 
-import com.company.Node;
+class Node {
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
 
+/**
+ * @author wanghaiming
+ */
 public class LinkedList {
     Node head;
 
@@ -27,8 +37,20 @@ public class LinkedList {
     }
 
     public static Node sortedMerge(Node headA, Node headB) {
+        //Deal with case that both headA and headB == null
+        if (headA == null && headB == null) {
+            return null;
+        }
+
         Node dummyhead = new Node(0);
         Node cur = dummyhead;
+
+        if (headA == null) {
+            cur.next = headB;
+        }
+        if (headB == null) {
+            cur.next = headA;
+        }
 
         while (headA != null && headB != null) {
             if (headA.data <= headB.data) {
@@ -41,17 +63,11 @@ public class LinkedList {
             }
             cur = cur.next;
         }
-        if (headA == null) {
-            cur.next = headB;
-        }
-        if (headB == null) {
-            cur.next = headA;
-        }
-
         return dummyhead.next;
     }
 
     public static Node reverse(Node head) {
+        //Deal with empty list
         if (head == null || head.next == null) {
             return head;
         }

@@ -1,7 +1,8 @@
 package com.company;
 
-import sun.awt.image.ImageWatched;
-
+/**
+ * @author wanghaiming
+ */
 public class Main {
 
     public static void main(String[] args) {
