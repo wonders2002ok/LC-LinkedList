@@ -1,2 +1,4 @@
-# LC-MergeTwoSoredList
-Leetcode Merge Two Sorted List in Java
+# LC-LinkedList
+Leetcode all linked list related codes
+1. Merge Two Sorted List in Java
+2. Reverse Linked List
