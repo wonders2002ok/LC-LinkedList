@@ -1,32 +1,61 @@
 package com.company;
 
-class Node {
-    int data;
-    Node next;
-    Node(int d) {
-        data = d;
-        next = null;
-    }
-}
-
 /**
- * @author wanghaiming
+ * @author Wallace
  */
 public class LinkedList {
-    Node head;
+    /**
+     * Head node of the list
+     */
+    public Node head;
 
-    public void addToLast(Node node) {
-        if (head == null) {
-            head = node;
-        } else {
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-            temp.next = node;
+    /**
+     * Node of linked list
+     */
+    public static class Node {
+        int data;
+        Node next;
+        Node(int data) {
+            this.data = data;
+            next = null;
         }
     }
 
+    /**
+     * Add new node to the head
+     * @param node new node
+     */
+    public void addToHead(Node node) {
+        if(head == null) {
+            head = node;
+            return;
+        }
+        //add new node to the head
+        node.next = head;
+        head = node;
+    }
+
+    /**
+     * Add new node to the tail of current linked list
+     * @param node new node
+     **/
+    public void addToTail(Node node) {
+        if (head == null) {
+            head = node;
+            return;
+        }
+        // find the tail node
+        Node tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        // add new node to the tail
+        tail.next = node;
+    }
+
+    /**
+     * Print current linked list
+     */
     public void printList() {
         Node temp = head;
         while (temp != null) {
@@ -36,36 +65,42 @@ public class LinkedList {
         System.out.println();
     }
 
-    public static Node sortedMerge(Node headA, Node headB) {
-        //Deal with case that both headA and headB == null
-        if (headA == null && headB == null) {
+    /**
+     * Merge 2 sorted list
+     * @param l1 linked list 1
+     * @param l2 linked list 2
+     * @return node
+     */
+    public static Node sortedMerge(Node l1, Node l2) {
+        // if all equals null, return null.
+        if (l1 == null && l2 == null) {
             return null;
         }
 
-        Node dummyhead = new Node(0);
-        Node cur = dummyhead;
-
-        if (headA == null) {
-            cur.next = headB;
-        }
-        if (headB == null) {
-            cur.next = headA;
-        }
-
-        while (headA != null && headB != null) {
-            if (headA.data <= headB.data) {
-                cur.next = headA;
-                headA = headA.next;
-            }
-            else {
-                cur.next = headB;
-                headB = headB.next;
+        Node dummyHead = new Node(-1);
+        Node cur = dummyHead;
+        while (l1 != null && l2 != null) {
+            if(l1.data <= l2.data) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
             }
             cur = cur.next;
         }
-        return dummyhead.next;
+
+        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+        // l1 or l2 has nodes that have greater val than the sorted list, put them to the tail.
+        cur.next = (l1 == null) ? l2 : l1;
+        return dummyHead.next;
     }
 
+    /**
+     * Reverse linked list
+     * @param head linked list
+     * @return return linked list
+     */
     public static Node reverse(Node head) {
         //Deal with empty list
         if (head == null || head.next == null) {

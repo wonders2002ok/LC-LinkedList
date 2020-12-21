@@ -1,8 +1,13 @@
+/**
+ * FileName: LinkedList
+ * Author:   Wallace
+ * Date:     2020/12/21 09:52
+ * Description: LinkedList Template
+ * History:
+ */
+
 package com.company;
 
-/**
- * @author wanghaiming
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -10,12 +15,12 @@ public class Main {
         LinkedList l2 = new LinkedList();
         LinkedList mergedList = new LinkedList();
 
-        l1.addToLast(new Node(-1));
-        l1.addToLast(new Node(0));
-        l1.addToLast(new Node(3));
-        l2.addToLast(new Node(0));
-        l2.addToLast(new Node(1));
-        l2.addToLast(new Node(5));
+        l1.addToTail(new LinkedList.Node(-1));
+        l1.addToTail(new LinkedList.Node(0));
+        l1.addToTail(new LinkedList.Node(3));
+        l2.addToTail(new LinkedList.Node(0));
+        l2.addToTail(new LinkedList.Node(1));
+        l2.addToTail(new LinkedList.Node(5));
 
         System.out.print("LinkedList 1 is ");
         l1.printList();
